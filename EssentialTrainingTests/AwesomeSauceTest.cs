@@ -15,7 +15,7 @@ namespace EssentialTrainingTests
             testInstance.Sauces.Add("Cholula");
             testInstance.Sauces.Add("Trailer Trash");
 
-            //expect to true
+            //expect true
             Assert.IsTrue(testInstance.IsSauceAwesome("Trailer Trash"));
 
             //expect false
