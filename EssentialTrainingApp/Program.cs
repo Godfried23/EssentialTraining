@@ -4,15 +4,18 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.IO;
+using NLog;
 
 namespace EssentialTrainingApp
 {
     public class Program
     {
+        public static Logger logger = LogManager.GetCurrentClassLogger();
         public static List<string> Words;
 
         static void Main(string[] args)
         {
+            logger.Trace("The program started");
             Words = new List<string>();
             Words.Add("Bread");
             Words.Add("Milk");
@@ -36,6 +39,7 @@ namespace EssentialTrainingApp
             {
 
                 Console.WriteLine("Couldn't find the directory.");
+                logger.Error("The directory was not found" + ex.Message);
             }
             catch  (System.IO.FileNotFoundException ex)
             {
@@ -44,6 +48,7 @@ namespace EssentialTrainingApp
             catch (Exception ex)
             {
                 Console.WriteLine("An unknown error occured " + ex.Message);
+                logger.Error(ex.Message);
             }
             finally
             {
